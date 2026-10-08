@@ -1,0 +1,206 @@
+@import "tailwindcss";
+@import "@fontsource/instrument-serif/latin-400.css";
+@import "@fontsource/instrument-serif/latin-400-italic.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Finax design tokens — "Paper & Ink".
+ * Warm paper surfaces, near-black ink, a single citrine signal colour and
+ * semantic money colours. Every component reads these roles, never raw hex.
+ */
+:root {
+  color-scheme: light;
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-2: #f1efea;
+  --surface-3: #e8e5de;
+  --ink: #131418;
+  --ink-2: #45474e;
+  --ink-3: #686a71;
+  --line: #e2dfd7;
+  --line-strong: #cbc7bc;
+  --primary: #131418;
+  --primary-fg: #f6f5f1;
+  --brand: #d7f25c;
+  --brand-ink: #3b5000;
+  --brand-soft: #eef8c8;
+  --positive: #127044;
+  --positive-soft: #e2f2e8;
+  --negative: #b8352a;
+  --negative-soft: #fae6e2;
+  --transfer: #3153c0;
+  --transfer-soft: #e5ebfa;
+  --warning: #8c5300;
+  --warning-soft: #fcefd6;
+  --focus: #3153c0;
+  --overlay: rgb(19 20 24 / 0.42);
+  --shadow-color: 30 28 20;
+  --chart-grid: #e6e3db;
+  --chart-axis: #c8c4b9;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0e0f11;
+  --surface: #16171a;
+  --surface-2: #1c1d21;
+  --surface-3: #25272c;
+  --ink: #f1f0ec;
+  --ink-2: #bdbeb8;
+  --ink-3: #93958e;
+  --line: #2a2c31;
+  --line-strong: #3b3e44;
+  --primary: #d7f25c;
+  --primary-fg: #14160a;
+  --brand: #d7f25c;
+  --brand-ink: #d7f25c;
+  --brand-soft: #2a3112;
+  --positive: #52cc8f;
+  --positive-soft: #15291e;
+  --negative: #ff7c6b;
+  --negative-soft: #35191a;
+  --transfer: #92a9ff;
+  --transfer-soft: #1b2340;
+  --warning: #f0b44c;
+  --warning-soft: #33270f;
+  --focus: #d7f25c;
+  --overlay: rgb(0 0 0 / 0.6);
+  --shadow-color: 0 0 0;
+  --chart-grid: #26282d;
+  --chart-axis: #3b3e44;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-positive: var(--positive);
+  --color-positive-soft: var(--positive-soft);
+  --color-negative: var(--negative);
+  --color-negative-soft: var(--negative-soft);
+  --color-transfer: var(--transfer);
+  --color-transfer-soft: var(--transfer-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-focus: var(--focus);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  --shadow-soft: 0 1px 2px rgb(var(--shadow-color) / 0.06), 0 2px 8px rgb(var(--shadow-color) / 0.04);
+  --shadow-lift: 0 4px 12px rgb(var(--shadow-color) / 0.08), 0 16px 40px rgb(var(--shadow-color) / 0.1);
+
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background: var(--brand);
+    color: #14160a;
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  button, [role="button"], summary {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .dark input[type="date"]::-webkit-calendar-picker-indicator,
+  .dark input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--surface-2) 0%, var(--surface-3) 50%, var(--surface-2) 100%);
+    background-size: 200% 100%;
+    animation: var(--animate-shimmer);
+    border-radius: var(--radius-sm);
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .skeleton { background: Canvas; border: 1px solid CanvasText; }
+}
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop-in { from { opacity: 0; transform: translate(-50%, -48%) scale(0.98); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@keyframes slide-in { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+
