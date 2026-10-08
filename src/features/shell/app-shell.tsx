@@ -291,7 +291,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <Sidebar onSearch={openPalette} />
       <div className="min-w-0 flex-1">
         <MobileTopBar onSearch={openPalette} />
-        <main id="main" tabIndex={-1} className="mx-auto w-full max-w-[1280px] px-4 pb-28 pt-5 outline-none sm:px-6 md:pb-12 md:pt-8 lg:px-10">
+        <main id="main" tabIndex={-1} className="mx-auto w-full max-w-[1280px] px-4 pb-28 pt-5 outline-none sm:px-6 md:pb-12 md:pt-8 lg:px-10 [&_.grid>*]:min-w-0">
           <PullToRefresh>{children}</PullToRefresh>
         </main>
       </div>

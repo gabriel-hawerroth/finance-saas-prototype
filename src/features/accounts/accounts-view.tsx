@@ -74,7 +74,7 @@ function OverallBalance({ data }: { data: AccountsOverallBalance }) {
                   <span className={cn("size-2 rounded-full", p.color)} aria-hidden />
                   {p.label}
                 </dt>
-                <dd className="mt-0.5 font-semibold">
+                <dd className="mt-0.5 text-[13px] font-semibold sm:text-base">
                   <Money value={p.value} tone={p.value < 0 ? "negative" : "neutral"} />
                 </dd>
               </div>
@@ -175,7 +175,7 @@ function GroupBlock({ group }: { group: InstitutionGroup }) {
       {group.rows.length > 0 && (
         <span className="text-right">
           <Money value={group.total} className="block text-[15px] font-semibold" tone={group.total < 0 ? "negative" : "neutral"} />
-          <span className="block text-[11px] text-ink-3">{single ? piggySummary(single) ?? (group.outsideOverall ? "fora do saldo geral" : "") : group.outsideOverall ? "fora do saldo geral" : "total na instituição"}</span>
+          <span className="block max-w-[46vw] truncate text-[11px] text-ink-3 sm:max-w-none">{single ? piggySummary(single) ?? (group.outsideOverall ? "fora do saldo geral" : "") : group.outsideOverall ? "fora do saldo geral" : "total na instituição"}</span>
         </span>
       )}
     </>

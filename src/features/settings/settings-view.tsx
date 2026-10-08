@@ -3,7 +3,7 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { Check, FlaskConical, Laptop, Loader2, Moon, RotateCcw, Sun, TimerReset, Unplug } from "lucide-react";
+import { Check, FlaskConical, Laptop, Loader2, Moon, RotateCcw, Sparkles, Sun, TimerReset, Unplug } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
 import { Segmented } from "@/components/ui/segmented";
@@ -170,6 +170,18 @@ function NetworkLab() {
         <div className="flex flex-wrap gap-2 border-t border-line pt-4">
           <Button size="sm" onClick={() => emitApiEvent(new ApiError(401, { errorDescription: "simulated" }))}>
             <TimerReset aria-hidden /> Simular sessão expirada
+          </Button>
+          <Button
+            size="sm"
+            onClick={() =>
+              toast("Nova versão disponível", {
+                description: "Atualize para receber as melhorias mais recentes.",
+                duration: Infinity,
+                action: { label: "Atualizar", onClick: () => window.location.reload() },
+              })
+            }
+          >
+            <Sparkles aria-hidden /> Simular nova versão do app
           </Button>
           <Button size="sm" onClick={() => router.push("/fora-do-ar")}>
             <Unplug aria-hidden /> Ver página “fora do ar”

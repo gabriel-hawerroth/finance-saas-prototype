@@ -1,0 +1,20 @@
+import * as React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { render } from "@testing-library/react";
+import { TooltipProvider } from "@/components/ui/menu";
+import { OverlayHost } from "@/features/overlays/store";
+
+export function renderWithProviders(ui: React.ReactElement) {
+  const qc = new QueryClient({ defaultOptions: { queries: { retry: false }, mutations: { retry: false } } });
+  return {
+    qc,
+    ...render(
+      <QueryClientProvider client={qc}>
+        <TooltipProvider>
+          {ui}
+          <OverlayHost />
+        </TooltipProvider>
+      </QueryClientProvider>,
+    ),
+  };
+}

@@ -56,10 +56,6 @@ export const MoneyInput = React.forwardRef<HTMLInputElement, MoneyInputProps>(fu
           }
           onKeyDown?.(e);
         }}
-        onFocus={(e) => {
-          const el = e.currentTarget;
-          requestAnimationFrame(() => el.select());
-        }}
         className={cn(
           inputClass,
           "tabular text-right",

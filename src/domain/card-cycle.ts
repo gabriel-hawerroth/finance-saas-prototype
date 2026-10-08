@@ -16,7 +16,7 @@ export function isUnusualGap(closeDay: number, dueDay: number): boolean {
 /** Suggested close day = due − 7, wrapping the month, capped at 28 (C9). e.g. due 3 → 27; due 5 → 28. */
 export function suggestCloseDay(dueDay: number): number {
   const raw = dueDay - 7;
-  const wrapped = raw >= 1 ? raw : raw + 30;
+  const wrapped = raw >= 1 ? raw : raw + 31;
   return Math.min(wrapped, 28);
 }
 

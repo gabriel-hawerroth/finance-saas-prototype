@@ -232,7 +232,7 @@ function Timeline({ data, onToggle, language }: { data: MonthlyRelease[]; onTogg
             key={row.kind === "day" ? `d-${row.date}` : row.release.key}
             data-index={v.index}
             ref={virtualizer.measureElement}
-            role={row.kind === "day" ? "presentation" : "listitem"}
+            role="listitem"
             className="absolute inset-x-0"
             style={{ transform: `translateY(${v.start - virtualizer.options.scrollMargin}px)` }}
           >
